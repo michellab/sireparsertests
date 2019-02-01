@@ -193,8 +193,8 @@ def test_nrg(prm_file, rst_file, verbose=False):
     sander_energies1 = _sanderEnergy(prm_file, rst_file)
     diff1 = nrg1-sander_energies1[0]
     if verbose:
-        print ("Difference in energies between sander and sire with inputs %s" % diff1)
-    assert_almost_equal( nrg1.value(), sander_energies1[0].value(), 3)
+        print ("Difference in energies between sander and sire with input %s" % diff1)
+    assert_almost_equal( nrg1.value(), sander_energies1[0].value(), 2)
     # Step 3. Write input from Sire. Read again. Compute sp energy.
     # Write back to file.
     p = AmberRst7(system)
@@ -209,9 +209,9 @@ def test_nrg(prm_file, rst_file, verbose=False):
     diff2 = nrg1 - nrg2
     if verbose:
         print ("Difference in energies between sire input and sire output %s " % diff2)
-    assert_almost_equal( nrg1.value(), nrg2.value(), 3)
+    assert_almost_equal( nrg1.value(), nrg2.value(), 2)
     # Step 4. Read again written input in sander. Compute sp energy with sander.
-    sander_energies2 = _sanderEnergy("test.rst7","test.prm7")
+    sander_energies2 = _sanderEnergy("test.prm7","test.rst7")
     diff3 = nrg2-sander_energies2[0]
 
     #tidy up
@@ -219,19 +219,22 @@ def test_nrg(prm_file, rst_file, verbose=False):
     os.system(cmd)
     if verbose:
         print ("Difference in energies between sire output and sander output %s " % diff3)
-    assert_almost_equal( nrg2.value(), sander_energies2[0].value(), 3)
+    assert_almost_equal( nrg2.value(), sander_energies2[0].value(), 2)
     #import pdb; pdb.set_trace()
     #assert_almost_equal( e_bond, 5.1844, 2 )
 
 if __name__ == '__main__':
-    #rst_files = glob.glob('input/*/03-fesetup-morph/*/*/*equili*')
-    #prm_files = glob.glob('input/*/03-fesetup-morph/*/*/solvated.parm7')
+    rst_files = glob.glob('input/*/03-fesetup-morph/*/*/*equili*')
+    prm_files = glob.glob('input/*/03-fesetup-morph/*/*/solvated.parm7')
 
-    rst_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/*equili*')
-    prm_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/solvated.parm7')
+    #rst_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/*equili*')
+    #prm_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/solvated.parm7')
 
     #prm_files = ['input/bace_ds/03-fesetup-morph/_ligands/bace_lig19/solvated.parm7']
     #rst_files = ['input/bace_ds/03-fesetup-morph/_ligands/bace_lig19/bace_lig19_equilibrated.rst7']
+
+    #prm_files = ['input/bace_ds/03-fesetup-morph/_complexes/BACE:bace_lig1/solvated.parm7']
+    #rst_files = ['input/bace_ds/03-fesetup-morph/_complexes/BACE:bace_lig1/BACE:bace_lig1_equilibrated.rst7']
     
     print ("Size of test set: %s " % len(rst_files))
     #    test_nrg(True)
