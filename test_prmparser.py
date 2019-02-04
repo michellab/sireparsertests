@@ -124,7 +124,8 @@ def _setupForcefields(system):
     return system
 
 def _sanderEnergy(prm_file, rst_file):
-    sanderbin = '/home/julien/software/amber18/bin/sander'
+    #sanderbin = '/home/julien/software/amber18/bin/sander'
+    sanderbin = '/home/julien/local/AMBER16/amber16/bin/sander'
     protocol = """
   Single point energy calc
 &cntrl
@@ -173,8 +174,8 @@ ncyc = 0
     eel14_nrg = eel_fudge*eel14_nrg
     tot_nrg = bond_nrg + angle_nrg+dihed_nrg+vdw_nrg+vdw14_nrg+eel_nrg+eel14_nrg
     # Tidy up
-    cmd = "rm -f sp.out sp.in restrt mdinfo"
-    os.system(cmd)
+    #cmd = "rm -f sp.out sp.in restrt mdinfo"
+    #os.system(cmd)
     
     return [tot_nrg*kcal_per_mol, bond_nrg, angle_nrg, dihed_nrg, vdw_nrg, vdw14_nrg, eel_nrg, eel14_nrg]
 
@@ -184,17 +185,22 @@ def test_nrg(prm_file, rst_file, verbose=False):
     if verbose:
         print ("############### Testing %s %s "%  (prm_file,rst_file))
     # Step 1 read input in Sire. Compute sp energy.
-    system = MoleculeParser.read(prm_file, rst_file)
-    molecules = system.molecules()
+    #system = MoleculeParser.read(prm_file, rst_file)
+    #molecules = system.molecules()
+    molecules, space = Amber().readCrdTop(rst_file, prm_file)
     system = _createSystem(molecules)
     system = _setupForcefields(system)
     nrg1 = system.energy()
     # Step 2. Compute sp energy with sander.
     sander_energies1 = _sanderEnergy(prm_file, rst_file)
     diff1 = nrg1-sander_energies1[0]
+    #import pdb; pdb.set_trace()
     if verbose:
         print ("Difference in energies between sander and sire with input %s" % diff1)
     assert_almost_equal( nrg1.value(), sander_energies1[0].value(), 2)
+    # Tidy up sabder output
+    cmd = "rm -f sp.out sp.in restrt mdinfo"
+    os.system(cmd)
     # Step 3. Write input from Sire. Read again. Compute sp energy.
     # Write back to file.
     p = AmberRst7(system)
@@ -205,7 +211,7 @@ def test_nrg(prm_file, rst_file, verbose=False):
     molecules2 = s2.molecules()
     s2 = _createSystem(molecules2)
     s2 = _setupForcefields(s2)
-    nrg2 = system.energy()
+    nrg2 = s2.energy()
     diff2 = nrg1 - nrg2
     if verbose:
         print ("Difference in energies between sire input and sire output %s " % diff2)
@@ -213,13 +219,15 @@ def test_nrg(prm_file, rst_file, verbose=False):
     # Step 4. Read again written input in sander. Compute sp energy with sander.
     sander_energies2 = _sanderEnergy("test.prm7","test.rst7")
     diff3 = nrg2-sander_energies2[0]
-
-    #tidy up
-    cmd = "rm test.rst7 test.prm7"
-    os.system(cmd)
     if verbose:
         print ("Difference in energies between sire output and sander output %s " % diff3)
     assert_almost_equal( nrg2.value(), sander_energies2[0].value(), 2)
+    # Tidy up
+    cmd = "rm -f sp.out sp.in restrt mdinfo"
+    os.system(cmd)
+    #tidy up
+    cmd = "rm test.rst7 test.prm7"
+    os.system(cmd)
     #import pdb; pdb.set_trace()
     #assert_almost_equal( e_bond, 5.1844, 2 )
 
@@ -236,6 +244,12 @@ if __name__ == '__main__':
     #prm_files = ['input/bace_ds/03-fesetup-morph/_complexes/BACE:bace_lig1/solvated.parm7']
     #rst_files = ['input/bace_ds/03-fesetup-morph/_complexes/BACE:bace_lig1/BACE:bace_lig1_equilibrated.rst7']
     
+    #prm_files = ['input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig15/solvated.parm7']
+    #rst_files = ['input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig15/tyk_lig15_equilibrated.rst7']
+
+    #prm_files = ['input/tyk2_ds/03-fesetup-morph/_complexes/TYK2:tyk_lig1/solvated.parm7']
+    #rst_files = ['input/tyk2_ds/03-fesetup-morph/_complexes/TYK2:tyk_lig1/TYK2:tyk_lig1_equilibrated.rst7']
+
     print ("Size of test set: %s " % len(rst_files))
     #    test_nrg(True)
     for x in range(0,len(prm_files)):
