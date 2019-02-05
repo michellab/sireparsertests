@@ -205,9 +205,9 @@ def test_nrg(prm_file, rst_file, ostream, verbose=False):
     if verbose:
         ostream.write("############### Testing %s %s \n"%  (prm_file,rst_file))
     # Step 1 read input in Sire. Compute sp energy.
-    #system = MoleculeParser.read(prm_file, rst_file)
-    #molecules = system.molecules()
-    molecules, space = Amber().readCrdTop(rst_file, prm_file)
+    system = MoleculeParser.read(prm_file, rst_file)
+    molecules = system.molecules()
+    #molecules, space = Amber().readCrdTop(rst_file, prm_file)
     system = _createSystem(molecules)
     system = _setupForcefields(system)
     nrg1 = system.energy()
@@ -252,7 +252,7 @@ def test_nrg(prm_file, rst_file, ostream, verbose=False):
         _print_sander_energies(sander_energies2, ostream)
     assert_almost_equal( nrg2.value(), sander_energies2[0].value(), 2)
     # Tidy up
-    cmd = "cp %s %s.sander-stage2.out" % (leaf,leaf)
+    cmd = "cp mdinfo %s.sander-stage2.out" % (leaf)
     os.system(cmd)
     cmd = "rm -f sp.out sp.in restrt mdinfo"
     os.system(cmd)
@@ -266,8 +266,8 @@ if __name__ == '__main__':
     #rst_files = glob.glob('input/*/03-fesetup-morph/*/*/*equili*')
     #prm_files = glob.glob('input/*/03-fesetup-morph/*/*/solvated.parm7')
 
-    rst_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/*equili*')
-    prm_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/solvated.parm7')
+    #rst_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/*equili*')
+    #prm_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/solvated.parm7')
 
     #rst_files = glob.glob('input/*/03-fesetup-morph/_complexes/*/*equili*')
     #prm_files = glob.glob('input/*/03-fesetup-morph/_complexes/*/solvated.parm7')
