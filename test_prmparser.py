@@ -180,10 +180,10 @@ ncyc = 0
     return [tot_nrg*kcal_per_mol, bond_nrg, angle_nrg, dihed_nrg, vdw_nrg, vdw14_nrg, eel_nrg, eel14_nrg]
 
     
-def test_nrg(prm_file, rst_file, verbose=False):
+def test_nrg(prm_file, rst_file, ostream, verbose=False):
 
     if verbose:
-        print ("############### Testing %s %s "%  (prm_file,rst_file))
+        ostream.write("############### Testing %s %s \n"%  (prm_file,rst_file))
     # Step 1 read input in Sire. Compute sp energy.
     #system = MoleculeParser.read(prm_file, rst_file)
     #molecules = system.molecules()
@@ -196,7 +196,7 @@ def test_nrg(prm_file, rst_file, verbose=False):
     diff1 = nrg1-sander_energies1[0]
     #import pdb; pdb.set_trace()
     if verbose:
-        print ("Difference in energies between sander and sire with input %s" % diff1)
+        ostream.write("Difference in energies between sander and sire with input %s \n" % diff1)
     assert_almost_equal( nrg1.value(), sander_energies1[0].value(), 2)
     # Tidy up sabder output
     cmd = "rm -f sp.out sp.in restrt mdinfo"
@@ -214,13 +214,13 @@ def test_nrg(prm_file, rst_file, verbose=False):
     nrg2 = s2.energy()
     diff2 = nrg1 - nrg2
     if verbose:
-        print ("Difference in energies between sire input and sire output %s " % diff2)
+        ostream.write("Difference in energies between sire input and sire output %s \n" % diff2)
     assert_almost_equal( nrg1.value(), nrg2.value(), 2)
     # Step 4. Read again written input in sander. Compute sp energy with sander.
     sander_energies2 = _sanderEnergy("test.prm7","test.rst7")
     diff3 = nrg2-sander_energies2[0]
     if verbose:
-        print ("Difference in energies between sire output and sander output %s " % diff3)
+        ostream.write("Difference in energies between sire output and sander output %s \n" % diff3)
     assert_almost_equal( nrg2.value(), sander_energies2[0].value(), 2)
     # Tidy up
     cmd = "rm -f sp.out sp.in restrt mdinfo"
@@ -232,11 +232,14 @@ def test_nrg(prm_file, rst_file, verbose=False):
     #assert_almost_equal( e_bond, 5.1844, 2 )
 
 if __name__ == '__main__':
-    rst_files = glob.glob('input/*/03-fesetup-morph/*/*/*equili*')
-    prm_files = glob.glob('input/*/03-fesetup-morph/*/*/solvated.parm7')
+    #rst_files = glob.glob('input/*/03-fesetup-morph/*/*/*equili*')
+    #prm_files = glob.glob('input/*/03-fesetup-morph/*/*/solvated.parm7')
 
-    #rst_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/*equili*')
-    #prm_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/solvated.parm7')
+    rst_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/*equili*')
+    prm_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/solvated.parm7')
+
+    #rst_files = glob.glob('input/*/03-fesetup-morph/_complexes/*/*equili*')
+    #prm_files = glob.glob('input/*/03-fesetup-morph/_complexes/*/solvated.parm7')
 
     #prm_files = ['input/bace_ds/03-fesetup-morph/_ligands/bace_lig19/solvated.parm7']
     #rst_files = ['input/bace_ds/03-fesetup-morph/_ligands/bace_lig19/bace_lig19_equilibrated.rst7']
@@ -247,15 +250,24 @@ if __name__ == '__main__':
     #prm_files = ['input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig15/solvated.parm7']
     #rst_files = ['input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig15/tyk_lig15_equilibrated.rst7']
 
+    prm_files = ['input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/solvated.parm7']
+    rst_files = ['input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/jnk1_lig17_equilibrated.rst7']
+
     #prm_files = ['input/tyk2_ds/03-fesetup-morph/_complexes/TYK2:tyk_lig1/solvated.parm7']
     #rst_files = ['input/tyk2_ds/03-fesetup-morph/_complexes/TYK2:tyk_lig1/TYK2:tyk_lig1_equilibrated.rst7']
 
-    print ("Size of test set: %s " % len(rst_files))
+    logfile = 'results.log'
+    #logfile = sys.stdout
+    #ostream = open(logfile,'w')
+    ostream = sys.stdout
+
+    ostream.write("Size of test set: %s \n" % len(rst_files))
     #    test_nrg(True)
     for x in range(0,len(prm_files)):
         prm = prm_files[x]
         rst = rst_files[x]
         try:
-            test_nrg(prm, rst, verbose=True)
+            test_nrg(prm, rst, ostream,verbose=True)
         except AssertionError:
-            print ("TEST FAILED! FOR %s %s " % (prm,rst))
+            ostream.write("TEST FAILED! FOR %s %s \n" % (prm,rst))
+        ostream.flush()

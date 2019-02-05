@@ -1,0 +1,162 @@
+Size of test set: 104 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig15/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig15/tyk_lig15_equilibrated.rst7 
+Difference in energies between sander and sire with input -7.61546e-05 kcal mol-1 
+
+==============================================================Difference in energies between sire input and sire output -3.4197e-10 kcal mol-1 
+
+Sending anonymous Sire usage statistics to http://siremol.org.
+For more information, see http://siremol.org/analytics
+To disable, set the environment variable 'SIRE_DONT_PHONEHOME' to 1
+To see the information sent, set the environment variable 
+SIRE_VERBOSE_PHONEHOME equal to 1. To silence this message, set
+the environment variable SIRE_SILENT_PHONEHOME to 1.
+==============================================================
+
+Difference in energies between sire output and sander output -7.61543e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig11/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig11/tyk_lig11_equilibrated.rst7 
+Difference in energies between sander and sire with input -7.06426e-05 kcal mol-1 
+Difference in energies between sire input and sire output 3.89264e-10 kcal mol-1 
+Difference in energies between sire output and sander output -7.0643e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig7/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig7/tyk_lig7_equilibrated.rst7 
+Difference in energies between sander and sire with input -2.77779e-05 kcal mol-1 
+Difference in energies between sire input and sire output 3.63798e-12 kcal mol-1 
+Difference in energies between sire output and sander output -2.77779e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig14/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig14/tyk_lig14_equilibrated.rst7 
+Difference in energies between sander and sire with input 2.21748e-05 kcal mol-1 
+Difference in energies between sire input and sire output -5.51154e-10 kcal mol-1 
+Difference in energies between sire output and sander output 2.21754e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig2/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig2/tyk_lig2_equilibrated.rst7 
+Difference in energies between sander and sire with input 9.04231e-05 kcal mol-1 
+Difference in energies between sire input and sire output -3.54703e-10 kcal mol-1 
+Difference in energies between sire output and sander output 9.04234e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig16/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig16/tyk_lig16_equilibrated.rst7 
+Difference in energies between sander and sire with input 6.73651e-05 kcal mol-1 
+Difference in energies between sire input and sire output 4.69299e-10 kcal mol-1 
+Difference in energies between sire output and sander output 6.73646e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig10/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig10/tyk_lig10_equilibrated.rst7 
+Difference in energies between sander and sire with input -5.11348e-05 kcal mol-1 
+Difference in energies between sire input and sire output 1.09139e-10 kcal mol-1 
+Difference in energies between sire output and sander output -5.11349e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig3/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig3/tyk_lig3_equilibrated.rst7 
+Difference in energies between sander and sire with input 0.000128181 kcal mol-1 
+Difference in energies between sire input and sire output -1.10958e-10 kcal mol-1 
+Difference in energies between sire output and sander output 0.000128181 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig17/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig17/tyk_lig17_equilibrated.rst7 
+Difference in energies between sander and sire with input -5.92827e-05 kcal mol-1 
+Difference in energies between sire input and sire output -5.42059e-10 kcal mol-1 
+Difference in energies between sire output and sander output -5.92822e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig6/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig6/tyk_lig6_equilibrated.rst7 
+Difference in energies between sander and sire with input -2.41023e-05 kcal mol-1 
+Difference in energies between sire input and sire output 1.01863e-10 kcal mol-1 
+Difference in energies between sire output and sander output -2.41024e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig12/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig12/tyk_lig12_equilibrated.rst7 
+Difference in energies between sander and sire with input 9.06803e-05 kcal mol-1 
+Difference in energies between sire input and sire output 2.36469e-11 kcal mol-1 
+Difference in energies between sire output and sander output 9.06803e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig8/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig8/tyk_lig8_equilibrated.rst7 
+Difference in energies between sander and sire with input 1.61519e-05 kcal mol-1 
+Difference in energies between sire input and sire output -2.67391e-10 kcal mol-1 
+Difference in energies between sire output and sander output 1.61522e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig13/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig13/tyk_lig13_equilibrated.rst7 
+Difference in energies between sander and sire with input -2.41272e-05 kcal mol-1 
+Difference in energies between sire input and sire output -2.85581e-10 kcal mol-1 
+Difference in energies between sire output and sander output -2.41269e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig4/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig4/tyk_lig4_equilibrated.rst7 
+Difference in energies between sander and sire with input -8.11402e-05 kcal mol-1 
+Difference in energies between sire input and sire output 3.27418e-10 kcal mol-1 
+Difference in energies between sire output and sander output -8.11406e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig5/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig5/tyk_lig5_equilibrated.rst7 
+Difference in energies between sander and sire with input 7.25568e-05 kcal mol-1 
+Difference in energies between sire input and sire output -8.18545e-11 kcal mol-1 
+Difference in energies between sire output and sander output 7.25569e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig9/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig9/tyk_lig9_equilibrated.rst7 
+Difference in energies between sander and sire with input -4.862e-05 kcal mol-1 
+Difference in energies between sire input and sire output 1.9827e-10 kcal mol-1 
+Difference in energies between sire output and sander output -4.86202e-05 kcal mol-1 
+############### Testing input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig1/solvated.parm7 input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig1/tyk_lig1_equilibrated.rst7 
+Difference in energies between sander and sire with input -6.82909e-05 kcal mol-1 
+Difference in energies between sire input and sire output -6.31189e-10 kcal mol-1 
+Difference in energies between sire output and sander output -6.82903e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig4/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig4/cdk2_lig4_equilibrated.rst7 
+Difference in energies between sander and sire with input -6.44199e-05 kcal mol-1 
+Difference in energies between sire input and sire output 2.874e-10 kcal mol-1 
+Difference in energies between sire output and sander output -6.44201e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig3/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig3/cdk2_lig3_equilibrated.rst7 
+Difference in energies between sander and sire with input 6.15272e-06 kcal mol-1 
+Difference in energies between sire input and sire output -1.13869e-09 kcal mol-1 
+Difference in energies between sire output and sander output 6.15386e-06 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig12/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig12/cdk2_lig12_equilibrated.rst7 
+Difference in energies between sander and sire with input 4.99362e-05 kcal mol-1 
+Difference in energies between sire input and sire output 7.13044e-10 kcal mol-1 
+Difference in energies between sire output and sander output 4.99355e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig1/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig1/cdk2_lig1_equilibrated.rst7 
+Difference in energies between sander and sire with input -4.88941e-05 kcal mol-1 
+Difference in energies between sire input and sire output -1.437e-10 kcal mol-1 
+Difference in energies between sire output and sander output -4.8894e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig14/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig14/cdk2_lig14_equilibrated.rst7 
+Difference in energies between sander and sire with input -5.77447e-06 kcal mol-1 
+Difference in energies between sire input and sire output -6.91216e-11 kcal mol-1 
+Difference in energies between sire output and sander output -5.7744e-06 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig5/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig5/cdk2_lig5_equilibrated.rst7 
+Difference in energies between sander and sire with input 0.000176378 kcal mol-1 
+Difference in energies between sire input and sire output -4.94765e-10 kcal mol-1 
+Difference in energies between sire output and sander output 0.000176378 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig13/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig13/cdk2_lig13_equilibrated.rst7 
+Difference in energies between sander and sire with input 4.01619e-05 kcal mol-1 
+Difference in energies between sire input and sire output 1.63709e-11 kcal mol-1 
+Difference in energies between sire output and sander output 4.01619e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig9/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig9/cdk2_lig9_equilibrated.rst7 
+Difference in energies between sander and sire with input 7.13039e-05 kcal mol-1 
+Difference in energies between sire input and sire output 1.36424e-10 kcal mol-1 
+Difference in energies between sire output and sander output 7.13038e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig11/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig11/cdk2_lig11_equilibrated.rst7 
+Difference in energies between sander and sire with input 2.18865e-05 kcal mol-1 
+Difference in energies between sire input and sire output -6.20275e-10 kcal mol-1 
+Difference in energies between sire output and sander output 2.18871e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig8/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig8/cdk2_lig8_equilibrated.rst7 
+Difference in energies between sander and sire with input -0.000180661 kcal mol-1 
+Difference in energies between sire input and sire output -2.38288e-10 kcal mol-1 
+Difference in energies between sire output and sander output -0.000180661 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig6/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig6/cdk2_lig6_equilibrated.rst7 
+Difference in energies between sander and sire with input -8.32737e-05 kcal mol-1 
+Difference in energies between sire input and sire output 6.25732e-10 kcal mol-1 
+Difference in energies between sire output and sander output -8.32744e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig2/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig2/cdk2_lig2_equilibrated.rst7 
+Difference in energies between sander and sire with input 2.29629e-05 kcal mol-1 
+Difference in energies between sire input and sire output -3.63798e-11 kcal mol-1 
+Difference in energies between sire output and sander output 2.2963e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig15/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig15/cdk2_lig15_equilibrated.rst7 
+Difference in energies between sander and sire with input 0.000161677 kcal mol-1 
+Difference in energies between sire input and sire output -8.24002e-10 kcal mol-1 
+Difference in energies between sire output and sander output 0.000161678 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig16/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig16/cdk2_lig16_equilibrated.rst7 
+Difference in energies between sander and sire with input -6.34327e-05 kcal mol-1 
+Difference in energies between sire input and sire output 2.5284e-10 kcal mol-1 
+Difference in energies between sire output and sander output -6.34329e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig10/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig10/cdk2_lig10_equilibrated.rst7 
+Difference in energies between sander and sire with input -7.66517e-05 kcal mol-1 
+Difference in energies between sire input and sire output -1.09139e-10 kcal mol-1 
+Difference in energies between sire output and sander output -7.66516e-05 kcal mol-1 
+############### Testing input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig7/solvated.parm7 input/cdk2_ds/03-fesetup-morph/_ligands/cdk2_lig7/cdk2_lig7_equilibrated.rst7 
+Difference in energies between sander and sire with input -4.34204e-06 kcal mol-1 
+Difference in energies between sire input and sire output 1.27329e-11 kcal mol-1 
+Difference in energies between sire output and sander output -4.34205e-06 kcal mol-1 
+############### Testing input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig19/solvated.parm7 input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig19/jnk1_lig19_equilibrated.rst7 
+Difference in energies between sander and sire with input -0.000106168 kcal mol-1 
+Difference in energies between sire input and sire output -6.73026e-11 kcal mol-1 
+Difference in energies between sire output and sander output -0.000106168 kcal mol-1 
+############### Testing input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/solvated.parm7 input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/jnk1_lig17_equilibrated.rst7 
+Difference in energies between sander and sire with input -0.0864287 kcal mol-1 
+TEST FAILED! FOR input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/solvated.parm7 input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/jnk1_lig17_equilibrated.rst7 
+############### Testing input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig8/solvated.parm7 input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig8/jnk1_lig8_equilibrated.rst7 
+Difference in energies between sander and sire with input 4.82031e-05 kcal mol-1 
+Difference in energies between sire input and sire output 1.85537e-10 kcal mol-1 
+Difference in energies between sire output and sander output 4.82029e-05 kcal mol-1 
+############### Testing input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig9/solvated.parm7 input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig9/jnk1_lig9_equilibrated.rst7 
+Difference in energies between sander and sire with input -8.20497e-05 kcal mol-1 
+Difference in energies between sire input and sire output -3.81988e-11 kcal mol-1 
+Difference in energies between sire output and sander output -8.20497e-05 kcal mol-1 
+############### Testing input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig1/solvated.parm7 input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig1/jnk1_lig1_equilibrated.rst7 
+Difference in energies between sander and sire with input 0.000131288 kcal mol-1 
+double free or corruption (out)
+Aborted (core dumped)
