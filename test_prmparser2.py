@@ -123,29 +123,9 @@ def _setupForcefields(system):
 
     return system
 
-def _sanderEnergy(prm_file, rst_file):
-    #sanderbin = '/home/julien/software/amber18/bin/sander'
-    sanderbin = '/home/julien/local/AMBER16/amber16/bin/sander'
-    protocol = """
-  Single point energy calc
-&cntrl
-ntf = 1, 
-ntb = 0, 
-ntc = 1,
-extdiel = 78.5,
-cut = 99999.0, 
-nsnb = 99999,
-imin = 1, 
-maxcyc = 1, 
-ncyc = 0
-&end
-    """
-    infile = open('sp.in','w')
-    infile.write(protocol)
-    infile.close()
-    cmd = "%s -O -i sp.in -o sp.out -p %s -c %s " % (sanderbin,prm_file,rst_file)
-    os.system(cmd)
-    sander_out = open('sp.out','r')
+def _read_sander_energies(prm_file, rst_file):
+    leaf = os.path.split(rst_file)[-1]
+    sander_out = open('sander-energies/%s.sander-stage1.out' % leaf,'r')
     buffer = sander_out.readlines()
     bond_nrg = 0.0
     angle_nrg = 0.0
@@ -173,9 +153,6 @@ ncyc = 0
     eel_nrg = eel_fudge*eel_nrg
     eel14_nrg = eel_fudge*eel14_nrg
     tot_nrg = bond_nrg + angle_nrg+dihed_nrg+vdw_nrg+vdw14_nrg+eel_nrg+eel14_nrg
-    # Tidy up    ostream.write("bond %s kcal_per_mol \n" % energies[1])u
-    #cmd = "rm -f sp.out sp.in restrt mdinfo"
-    #os.system(cmd)
     
     return [tot_nrg*kcal_per_mol, bond_nrg, angle_nrg, dihed_nrg, vdw_nrg, vdw14_nrg, eel_nrg, eel14_nrg]
 
@@ -211,8 +188,8 @@ def test_nrg(prm_file, rst_file, ostream, verbose=False):
     system = _createSystem(molecules)
     system = _setupForcefields(system)
     nrg1 = system.energy()
-    # Step 2. Compute sp energy with sander.
-    sander_energies1 = _sanderEnergy(prm_file, rst_file)
+    # Step 2. Locate sp energy pre-computed with sander.
+    sander_energies1 = _read_sander_energies(prm_file, rst_file)
     diff1 = nrg1-sander_energies1[0]
     #import pdb; pdb.set_trace()
     if verbose:
@@ -220,12 +197,6 @@ def test_nrg(prm_file, rst_file, ostream, verbose=False):
         _print_sire_energies(system.energies(), ostream)
         _print_sander_energies(sander_energies1, ostream)
     assert_almost_equal( nrg1.value(), sander_energies1[0].value(), 2)
-    # Tidy up sabder output
-    leaf = os.path.split(rst_file)[-1]
-    cmd = "cp mdinfo %s.sander-stage1.out" % (leaf)
-    os.system(cmd)
-    cmd = "rm -f sp.out sp.in restrt mdinfo"
-    os.system(cmd)
     # Step 3. Write input from Sire. Read again. Compute sp energy.
     # Write back to file.
     p = AmberRst7(system)
@@ -243,19 +214,6 @@ def test_nrg(prm_file, rst_file, ostream, verbose=False):
         _print_sire_energies(system.energies(), ostream)
         _print_sire_energies(s2.energies(), ostream)
     assert_almost_equal( nrg1.value(), nrg2.value(), 2)
-    # Step 4. Read again written input in sander. Compute sp energy with sander.
-    sander_energies2 = _sanderEnergy("test.prm7","test.rst7")
-    diff3 = nrg2-sander_energies2[0]
-    if verbose:
-        ostream.write("Difference in energies between sire output and sander output %s \n" % diff3)
-        _print_sire_energies(s2.energies(), ostream)
-        _print_sander_energies(sander_energies2, ostream)
-    assert_almost_equal( nrg2.value(), sander_energies2[0].value(), 2)
-    # Tidy up
-    cmd = "cp mdinfo %s.sander-stage2.out" % (leaf)
-    os.system(cmd)
-    cmd = "rm -f sp.out sp.in restrt mdinfo"
-    os.system(cmd)
     #tidy up
     cmd = "rm test.rst7 test.prm7"
     os.system(cmd)
@@ -263,8 +221,8 @@ def test_nrg(prm_file, rst_file, ostream, verbose=False):
     #assert_almost_equal( e_bond, 5.1844, 2 )
 
 if __name__ == '__main__':
-    #rst_files = glob.glob('input/*/03-fesetup-morph/*/*/*equili*')
-    #prm_files = glob.glob('input/*/03-fesetup-morph/*/*/solvated.parm7')
+    rst_files = glob.glob('input/*/03-fesetup-morph/*/*/*equili*')
+    prm_files = glob.glob('input/*/03-fesetup-morph/*/*/solvated.parm7')
 
     #rst_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/*equili*')
     #prm_files = glob.glob('input/*/03-fesetup-morph/_ligands/*/solvated.parm7')
@@ -281,13 +239,13 @@ if __name__ == '__main__':
     #prm_files = ['input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig15/solvated.parm7']
     #rst_files = ['input/tyk2_ds/03-fesetup-morph/_ligands/tyk_lig15/tyk_lig15_equilibrated.rst7']
 
-    prm_files = ['input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/solvated.parm7']
-    rst_files = ['input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/jnk1_lig17_equilibrated.rst7']
+    #prm_files = ['input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/solvated.parm7']
+    #rst_files = ['input/jnk1_ds/03-fesetup-morph/_ligands/jnk1_lig17/jnk1_lig17_equilibrated.rst7']
 
-    #prm_files = ['input/tyk2_ds/03-fesetup-morph/_complexes/TYK2:tyk_lig1/solvated.parm7']
-    #rst_files = ['input/tyk2_ds/03-fesetup-morph/_complexes/TYK2:tyk_lig1/TYK2:tyk_lig1_equilibrated.rst7']
+    prm_files = ['input/tyk2_ds/03-fesetup-morph/_complexes/TYK2:tyk_lig1/solvated.parm7']
+    rst_files = ['input/tyk2_ds/03-fesetup-morph/_complexes/TYK2:tyk_lig1/TYK2:tyk_lig1_equilibrated.rst7']
 
-    logfile = 'results.log'
+    #logfile = 'results.log'
     #logfile = sys.stdout
     #ostream = open(logfile,'w')
     ostream = sys.stdout
