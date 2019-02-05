@@ -173,13 +173,33 @@ ncyc = 0
     eel_nrg = eel_fudge*eel_nrg
     eel14_nrg = eel_fudge*eel14_nrg
     tot_nrg = bond_nrg + angle_nrg+dihed_nrg+vdw_nrg+vdw14_nrg+eel_nrg+eel14_nrg
-    # Tidy up
+    # Tidy up    ostream.write("bond %s kcal_per_mol \n" % energies[1])u
     #cmd = "rm -f sp.out sp.in restrt mdinfo"
     #os.system(cmd)
     
     return [tot_nrg*kcal_per_mol, bond_nrg, angle_nrg, dihed_nrg, vdw_nrg, vdw14_nrg, eel_nrg, eel14_nrg]
 
-    
+
+def _print_sire_energies(nrgs1, ostream):
+    keys = list(nrgs1.keys())
+    keys.sort()
+
+    ostream.write('#Sire energies \n')
+    for key in keys:
+        ostream.write("%s  %s\n" % (key, nrgs1[key]))
+    return
+
+def _print_sander_energies(energies, ostream):
+    ostream.write('#Sander energies \n')
+    ostream.write("bond %s kcal_per_mol \n" % energies[1])
+    ostream.write("angle %s kcal_per_mol \n" % energies[2])
+    ostream.write("dihedral %s kcal_per_mol \n" % energies[3])
+    ostream.write("vdw %s kcal_per_mol \n" % energies[4])
+    ostream.write("vdw14 %s kcal_per_mol \n" % energies[5])
+    ostream.write("eel %s kcal_per_mol \n" % energies[6])
+    ostream.write("eel14 %s kcal_per_mol \n" % energies[7])
+    ostream.write("total %s kcal_per_mol \n" % energies[0].value())
+
 def test_nrg(prm_file, rst_file, ostream, verbose=False):
 
     if verbose:
@@ -197,8 +217,13 @@ def test_nrg(prm_file, rst_file, ostream, verbose=False):
     #import pdb; pdb.set_trace()
     if verbose:
         ostream.write("Difference in energies between sander and sire with input %s \n" % diff1)
+        _print_sire_energies(system.energies(), ostream)
+        _print_sander_energies(sander_energies1, ostream)
     assert_almost_equal( nrg1.value(), sander_energies1[0].value(), 2)
     # Tidy up sabder output
+    leaf = os.path.split(rst_file)[-1]
+    cmd = "cp mdinfo %s.sander-stage1.out" % (leaf)
+    os.system(cmd)
     cmd = "rm -f sp.out sp.in restrt mdinfo"
     os.system(cmd)
     # Step 3. Write input from Sire. Read again. Compute sp energy.
@@ -215,14 +240,20 @@ def test_nrg(prm_file, rst_file, ostream, verbose=False):
     diff2 = nrg1 - nrg2
     if verbose:
         ostream.write("Difference in energies between sire input and sire output %s \n" % diff2)
+        _print_sire_energies(system.energies(), ostream)
+        _print_sire_energies(s2.energies(), ostream)
     assert_almost_equal( nrg1.value(), nrg2.value(), 2)
     # Step 4. Read again written input in sander. Compute sp energy with sander.
     sander_energies2 = _sanderEnergy("test.prm7","test.rst7")
     diff3 = nrg2-sander_energies2[0]
     if verbose:
         ostream.write("Difference in energies between sire output and sander output %s \n" % diff3)
+        _print_sire_energies(s2.energies(), ostream)
+        _print_sander_energies(sander_energies2, ostream)
     assert_almost_equal( nrg2.value(), sander_energies2[0].value(), 2)
     # Tidy up
+    cmd = "cp %s %s.sander-stage2.out" % (leaf,leaf)
+    os.system(cmd)
     cmd = "rm -f sp.out sp.in restrt mdinfo"
     os.system(cmd)
     #tidy up
